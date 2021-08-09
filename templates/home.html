@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Monitor System</title>
+    <link rel="icon" href="../static/assets/logo.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home123.css') }}" />
+   
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="logo">
+          <a href="{{ url_for('index') }}"
+            ><img src="../static/assets/logo.png" alt="logo"/>
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li class="active"><a href="{{ url_for('home') }}">Detect</a></li>
+            <li><a href="{{ url_for('report', id=session['id']) }}">Report</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          </ul>
+        </nav>
+        <div class="menu">
+          <a href="#" class="menu-trigger">Меню</a>
+        </div>
+      </header>
+    </section>
+    <div class="div-head">
+      <h1>ATTENTION DETECTION</h1><hr>
+      <div class="jumbotron jumb-width">
+        <p class="lead">
+          During the online lectures whenever the students are found doing any
+          other activity away from their laptops or the screens, the system can
+          profoundly understand that the students are not paying attention.The
+          system analyses the attentiveness of the students attending the online
+          lectures. It gives an alert message to the student every time the
+          student is found inattentive during the lecture.
+        </p>
+        <hr class="my-4" />
+        <p class="lead">
+          It will be the systems job and students job to be attentive during an
+          online lecture.
+        </p>
+        <form method="post" action="/start">
+          <input
+            type="submit"
+            class="btn btn-outline-warning btn-lg"
+            value="Start"
+            name="Start"
+          />
+        </form>
+      </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('.menu-trigger').click(function () {
+          $('ul li').slideToggle(500);
+        }); //end slide toggle
+
+        $(window).resize(function () {
+          if ($(window).width() > 500) {
+            $('ul li').removeAttr('style');
+          }
+        }); //end resize
+      }); //end ready
+    </script>
+  </body>
+</html>

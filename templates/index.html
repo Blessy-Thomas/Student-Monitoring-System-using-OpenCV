@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Monitoring System</title>
+	<link rel = "icon" href = "../static/assets/logo.png" type = "image/x-icon"> 
+	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='index_index.css') }}">	 -->
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+    integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous">
+    </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+    integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+    </script>
+	<style>
+		* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body, html{
+  height:100%;
+  margin:0;
+  font-size:16px;
+  font-family:"Lato", sans-serif;
+  font-weight:400;
+  line-height:1.8em;
+  color:#666;
+}
+
+body {
+font-size: 100%;
+font-family: sans-serif;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15%;
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);	
+}
+
+.logo img {
+margin-left: 2.3em;
+max-width: 80%;
+height: auto !important;
+}
+
+nav ul {
+    display: flex;
+    flex-flow: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+    list-style-type: none;
+}
+
+ul li a {
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #262625;
+    font-weight: bold;
+    transition: .5s;
+}
+
+ul li a:hover {
+    background: #000;
+    color: #fff;
+    transition: .5s
+}
+
+.menu-trigger {
+    display:none;
+    margin-right: 1.5em;
+    background: #D56287;
+    color: #fff;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@media screen and (max-width:816px) {
+    
+    .menu-trigger {
+    display:block;
+}
+
+    header {
+    display: flex;
+    align-items: flex-start;
+    height: 65%;
+    
+    
+    }
+
+    nav ul {
+    display:block;
+    
+    
+    }
+    
+    ul li {
+    width: 50vh;
+    
+    }
+
+    ul li a {
+        display: block;
+        /* text-align: center; */
+        color: #ffff;
+        background: rgba(0,0,0,.5);
+        
+    }
+
+}
+
+@media (max-width: 359px){
+    .logo img {
+    margin-left: 0.1em;	
+    }
+}
+
+
+.pimg1{
+  position:relative;
+  opacity:1;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+
+  /*
+    fixed = parallax
+    scroll = normal
+  */
+  background-attachment:fixed;
+}
+
+.pimg1{
+  background:linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),url("https://cdn.dribbble.com/users/391028/screenshots/1507843/gif2.gif");
+  background-repeat: no-repeat;
+  min-height:100%;
+  background-size: cover; 
+}
+
+
+
+.section{
+  text-align:center;
+  padding:50px 80px;
+}
+
+.section-light{
+  background-color:#f4f4f4;
+  color:#666;
+}
+
+.section-dark{
+  background-image: linear-gradient(120deg,rgb(19, 29, 41),rgb(37, 95, 110));
+  color:#ddd;
+}
+
+.ptext{
+  position:absolute;
+  top:50%;
+  width:100%;
+  text-align:justify-all;
+  color:#000;
+  font-size:25px;
+  letter-spacing:6px;
+  text-transform:uppercase;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 250px;
+}
+
+.ptext .border{
+  background-color:#111;
+  color:#fff;
+  padding:20px;
+}
+
+.ptext .border.trans{
+  background-color:transparent;
+}
+
+@media(max-width:568px){
+  .pimg1, .pimg2, .pimg3{
+    background-attachment:scroll;
+  }
+}
+.l-div{
+    width:280px;
+    height: 250px;
+    background-color: none;
+    /*position: relative;*/
+    animation: movingl 3s;
+}
+.r-div{
+    width:310px;
+    height: 250px;
+    background-color: none;
+    position: relative;
+    animation: movingr 3s;
+}
+#div1{animation-timing-function: linear;}
+#div2{animation-timing-function: linear;}
+#div3{animation-timing-function: linear;}
+@keyframes movingl
+{
+    from{left:-500px;}
+    to{left:-250px;}
+}	
+@keyframes movingr
+{
+    from{left:500px;}
+    to{left:-100px;}
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}		
+a {
+  position: relative;
+  padding: 10px 40px;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 40px;
+}
+
+a span {
+  position: relative;
+  color: #fff;
+  font-size: 20px;
+  font-family: Arial;
+  letter-spacing: 5px;
+  z-index: 1;
+}
+
+a .liquid {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background: rgb(115, 177, 240);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+  transition: .5s;
+}
+
+a .liquid::after,
+a .liquid::before {
+  content: '';
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -75%);
+  background: #000;
+}
+
+a .liquid::before {
+  
+  border-radius: 45%;
+  background: rgba(31, 44, 84, 1);
+  animation: animate 5s linear infinite;
+}
+
+a .liquid::after {
+  
+  border-radius: 40%;
+  background: rgba(31, 44, 84, .5);
+  animation: animate 10s linear infinite;
+}
+
+a:hover .liquid{
+  top: -120px;
+}
+
+@keyframes animate {
+  0% {
+    transform: translate(-50%, -75%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -75%) rotate(360deg);
+  }
+}
+    .container1 {
+     position: absolute;
+     -webkit-transform: translate(-50%, -50%);
+     -ms-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+     left: 50%;
+     top: 50%;
+     font-family: 'Raleway', sans-serif;
+}
+ .title {
+     font-weight: 800;
+     color: transparent;
+     font-size: 55px;
+     background: url("../static/assets/shibua_gif.gif") repeat;
+     background-position: 40% 50%;
+     -webkit-background-clip: text;
+     position: relative;
+     text-align: center;
+     line-height: 90px;
+     letter-spacing: 0.5px;
+}
+ .subtitle {
+     display: block;
+     text-align: center;
+     text-transform: uppercase;
+     padding-top: 10px;
+     font-size: 18px;
+     color:rgba(87, 4, 28, 0.9);
+     font-weight: bold;
+}
+
+/* ================ The Timeline ================ */
+
+.timeline {
+  position: relative;
+  width: 660px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 1em 0;
+  list-style-type: none;
+}
+
+/*.timeline:before {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  content: ' ';
+  display: block;
+  width: 6px;
+  height: 100%;
+  margin-left: -3px;
+  background: rgb(80,80,80);
+  background: -moz-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,1)));
+  background: -webkit-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+  background: -o-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+  background: -ms-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+  background: linear-gradient(to bottom, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+  
+  z-index: 5;
+}*/
+
+.timeline li {
+  padding: 1em 0;
+}
+
+.timeline li:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.direction-l {
+  position: relative;
+  width: 300px;
+  float: left;
+  text-align: right;
+}
+
+.direction-r {
+  position: relative;
+  width: 300px;
+  float: right;
+}
+
+.flag-wrapper {
+  position: relative;
+  display: inline-block;
+  
+  text-align: center;
+}
+
+.flag {
+  position: relative;
+  display: inline;
+  background: rgb(248,248,248);
+  padding: 6px 10px;
+  border-radius: 5px;
+  color: rgb(30, 67, 97);
+  font-weight: 600;
+  text-align: left;
+}
+
+.direction-l .flag {
+  -webkit-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+  -moz-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+  box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+}
+
+.direction-r .flag {
+  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+}
+
+.direction-l .flag:before,
+.direction-r .flag:before {
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  content: ' ';
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-top: -10px;
+  background: #fff;
+  border-radius: 10px;
+  border: 4px solid rgb(255,80,80);
+  z-index: 10;
+}
+
+.direction-r .flag:before {
+  left: -40px;
+}
+
+.direction-l .flag:after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  height: 0;
+  width: 0;
+  margin-top: -8px;
+  border: solid transparent;
+  border-left-color: rgb(248,248,248);
+  border-width: 8px;
+  pointer-events: none;
+}
+
+.direction-r .flag:after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  height: 0;
+  width: 0;
+  margin-top: -8px;
+  border: solid transparent;
+  border-right-color: rgb(248,248,248);
+  border-width: 8px;
+  pointer-events: none;
+}
+
+.time-wrapper {
+  display: inline;
+  
+  line-height: 1em;
+  font-size: 0.66666em;
+  color: rgb(250,80,80);
+  vertical-align: middle;
+}
+
+.direction-l .time-wrapper {
+  float: left;
+}
+
+.direction-r .time-wrapper {
+  float: right;
+}
+
+.time {
+  display: inline-block;
+  padding: 4px 6px;
+  background: rgb(248,248,248);
+}
+
+.desc {
+  margin: 1em 0.75em 0 0;
+  
+  font-size: 0.77777em;
+  font-style: italic;
+  line-height: 1.5em;
+  color: rgb(204, 218, 235);
+}
+
+.direction-r .desc {
+  margin: 1em 0 0 0.75em;
+}
+
+/* ================ Timeline Media Queries ================ */
+
+@media screen and (max-width: 660px) {
+
+.timeline {
+    width: 100%;
+    padding: 4em 0 1em 0;
+}
+
+.timeline li {
+    padding: 2em 0;
+}
+
+.direction-l,
+.direction-r {
+    float: none;
+    width: 100%;
+
+    text-align: center;
+}
+
+.flag-wrapper {
+    text-align: center;
+}
+
+.flag {
+    background: rgb(255,255,255);
+    color: rgb(19, 29, 41);
+    z-index: 15;
+}
+
+.direction-l .flag:before,
+.direction-r .flag:before {
+  position: absolute;
+  top: -30px;
+    left: 50%;
+    content: ' ';
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin-left: -9px;
+    background: #fff;
+    border-radius: 10px;
+    color: rgb(19, 29, 41);
+    border: 4px solid rgb(255,80,80);
+    z-index: 10;
+}
+
+.direction-l .flag:after,
+.direction-r .flag:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -8px;
+    height: 0;
+    width: 0;
+    margin-left: -8px;
+    border: solid transparent;
+    border-bottom-color: rgb(255,255,255);
+    color: rgb(19, 29, 41);
+    border-width: 8px;
+    pointer-events: none;
+}
+
+.time-wrapper {
+    display: block;
+    position: relative;
+    margin: 4px 0 0 0;
+    z-index: 14;
+}
+
+.direction-l .time-wrapper {
+    float: none;
+}
+
+.direction-r .time-wrapper {
+    float: none;
+}
+
+.desc {
+
+    position: relative;
+    margin: 1em 0 0 0;
+    padding: 1em;
+    background: none;
+    -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.20);
+    -moz-box-shadow: 0 0 1px rgba(0,0,0,0.20);
+    box-shadow: 0 0 1px rgba(0,0,0,0.20);
+    
+  z-index: 15;
+}
+
+.direction-l .desc,
+.direction-r .desc {
+    position: relative;
+    margin: 1em 1em 0 1em;
+    padding: 1em;
+    z-index: 15;
+}
+
+}
+
+@media screen and (min-width: 400px ?? max-width: 660px) {
+
+.direction-l .desc,
+.direction-r .desc {
+    margin: 1em 4em 0 4em;
+}
+
+}
+/* stat alert*/
+.text-effect {
+  position: relative;
+   
+  /* The blend modes mute the colors, so let's bump them up*/
+  filter: contrast(110%) brightness(190%);
+}
+
+.neon {
+  position: relative;
+  text-shadow: 0 0 2rem rgba(red, 0.2);
+
+  &::before,
+  &::after {
+    /*Add two copies of the text on their own layer*/
+    content: attr(data-text);
+    
+    color: red;
+    
+    /*And blur them to create the neon effect with the blend-mode below*/
+    filter: blur(0.01em);
+    
+    position: absolute;
+    top: 0; left: 0;
+    pointer-events: none;
+  }
+  
+  /* Set the top copy to difference. This creates the knock-out effect with a bit of glow*/
+  &::after {
+    mix-blend-mode: difference;
+  }
+}
+
+/*=== Pen styling, ignore*/
+
+.text-effect { 
+  flex: 0 1 0;
+  text-align: center;
+}
+
+/* Style text*/
+.neon {
+  display: inline-block;
+  font: 300 50px/1 serif;
+  text-transform: uppercase;
+  margin: 0;
+  
+  &:focus { outline: none; border: 1px dotted white; }
+}
+.text-style{
+transition: 4s ease-in-out;
+letter-spacing: 6px;
+}
+	</style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+		    <a href="{{ url_for('index') }}"><img src="../static/assets/logo.png" alt="logo"></a>
+        </div>
+        <nav>
+			<ul>
+				<li><a href="{{ url_for('index') }}">Home</a></li>
+				<li><a href="{{ url_for('login') }}">Log in</a></li>
+				<li><a href="{{ url_for('register') }}">Register</a></li>
+			</ul>
+        </nav>
+        <div class="menu">
+            <a href="#" class="menu-trigger">Меню</a>
+        </div>
+    </header>			
+	<div class="pimg1">
+        <div class="container1">
+  			<div class="title">STUDENT MONITORING SYSTEM</div>
+  			<div class="subtitle">Monitoring students’ attention in an online lecture through Computer Vision</div>
+		</div>
+  	</div>
+  
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <script>
+		$(document).ready(function() {
+	$('.menu-trigger').click(function() {
+		$('ul li').slideToggle(500);
+	});//end slide toggle
+	
+	$(window).resize(function() {		
+			if (  $(window).width() > 500 ) {			
+				$('ul li').removeAttr('style');
+			}
+		});//end resize
+	});//end ready
+  </script>
+</body>
+</html>

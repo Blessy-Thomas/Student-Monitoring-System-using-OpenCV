@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="../static/assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='9.css') }}">
+</head>
+
+<body onLoad="username.focus();">
+    <header>
+        <div class="container">
+            <ul class="topnav-right">
+                <li>
+                    <a href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="active">
+                    <a href="{{ url_for('login') }}">Log in</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('register') }}">Register</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div id="main-content" class="container">
+        <div class="box">
+            <!--forms-container -->
+            <div class="login-wrapper">
+                <h2 class="title">Welcome<span> Back!</span></h2>
+                <h3>Login</h3>
+                <form action="{{ url_for('login') }}" method='post' class="log-in-form" id="login_form" name="Login">
+
+                    <div class="inputBox">
+                        <input type="text" name="username" onkeyup="this.setAttribute('value', this.value);"
+                            id="username" value="" required>
+                        <label for="username">Username </label>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <!-- <small id ="errorMsg">error msg</small> -->
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="password" value="" id="password" minlength="8" required
+                            onkeyup="this.setAttribute('value', this.value);">
+                        <label for="password">Password </label>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <!-- <small id="errorMsg">error msg</small> -->
+                    </div>
+                    {%if msg %}
+                    <div id="errorMsg">{{ msg }}</div>
+                    {% endif %}
+                    <input class="button-success" type="submit" name="submit" value="Log in"></input>
+                </form>
+
+                <div class="login-footer">Don't have an account?
+                    <a href="{{ url_for('register') }}">Register</a>
+                </div>
+                <!-- <div class="login-footer">Forgot Password?
+                        <a href="#">Reset it</a>
+                    </div> -->
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="icon" href="../static/assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='9.css') }}">
+    <style>
+        .radio {
+            margin-bottom: 30px;
+        }
+
+        .radio p {
+            color: rgb(255, 0, 98);
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #student,
+        #teacher {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body onLoad="username.focus();">
+    <header>
+        <div class="container">
+            <ul class="topnav-right">
+                <li>
+                    <a href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('login') }}">Log in</a>
+                </li>
+                <li class="active">
+                    <a href="{{ url_for('register') }}">Register</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div id="main-content" class="container">
+        <div class="box2">
+            <!--forms-container -->
+            <div class="login-wrapper">
+                <!-- <h2 class="title">New<span> Here?</span></h2> -->
+                <!-- <h4>New Here?</h4> -->
+                <h3>Register</h3>
+                <form action="{{ url_for('register') }}" method='post' class="log-in-form" id="login_form" name="Login"
+                    autocomplete="off">
+
+                    <div class="inputBox">
+                        <input type="text" name="username" onkeyup="this.setAttribute('value', this.value);"
+                            id="username" value="" required>
+                        <label for="username">Username </label>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <!-- <small id ="errorMsg">error msg</small> -->
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="firstname" onkeyup="this.setAttribute('value', this.value);"
+                            id="firstname" value="" required>
+                        <label for="firstname">Firstname </label>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <!-- <small id ="errorMsg">error msg</small> -->
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="lastname" onkeyup="this.setAttribute('value', this.value);"
+                            id="lastname" value="" required>
+                        <label for="lastname">Lastname </label>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <!-- <small id ="errorMsg">error msg</small> -->
+                    </div>
+                    <div class="radio">
+                        <p>Please select your user type:</p>
+                        <input type="radio" id="student" name="ut_id" value="0">
+                        <label for="0">Student</label><br>
+                        <input type="radio" id="teacher" name="ut_id" value="1">
+                        <label for="1">Teacher</label><br>
+                    </div>
+                    <div class="inputBox">
+                        <input type="email" name="email" onkeyup="this.setAttribute('value', this.value);" id="email"
+                            value="" required>
+                        <label for="lasttname">Email </label>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <!-- <small id ="errorMsg">error msg</small> -->
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="password" value="" id="password" minlength="8" required
+                            onkeyup="this.setAttribute('value', this.value);">
+                        <label for="password">Password </label>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <!-- <small id="errorMsg">error msg</small> -->
+                    </div>
+                    <div class="inputBox">
+                        <input type="tel" name="mobile" value="" id="mobile" required
+                            onkeyup="this.setAttribute('value', this.value);">
+                        <label for="mobile">Mobile No.</label>
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <!-- <small id="errorMsg">error msg</small> -->
+                    </div>
+                    {%if msg %}
+                    <div id="errorMsg">{{ msg }}</div>
+                    {% endif %}
+                    <input class="button-success" type="submit" name="submit" value="Register"></input>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
+</body>
+
+</html>

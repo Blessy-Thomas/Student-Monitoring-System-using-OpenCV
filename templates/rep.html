@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Student Monitor System</title>
+  <link rel="icon" href="/static/assets/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home123.css') }}" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+    integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+    integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous">
+  </script>
+</head>
+
+<body>
+  <section>
+    <header>
+      <div class="logo">
+        <a href="{{ url_for('index') }}"><img src="/static/assets/logo.png" alt="logo" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('teacher') }}">Profile</a></li>
+          <li class="active"><a href="{{ url_for('rep') }}">Report</a></li>
+          <li><a href="{{ url_for('logout') }}">Log out</a></li>
+        </ul>
+      </nav>
+      <div class="menu">
+        <a href="#" class="menu-trigger">Меню</a>
+      </div>
+    </header>
+  </section>
+
+  <div class="container mt-2">
+    <h1>STUDENT REPORT</h1><hr>
+    {% if reports %}
+    {% for report in reports %}
+    <div class="my-2">
+      <div class="card mx-auto mb-3" style="max-width: 50rem; color: black">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="/static/assets/Reports/{{report.folder_string}}/dataset/attentive/attentive.jpg"
+              class="card-img-top" style="height: 24vw;" alt="Image Not Found" />
+          </div>
+          <div class="col-md-8">
+
+            <div class="card-body">
+              <h5> Name : {{report['firstname']}} {{report['lastname']}}</h5>
+              <h5> Email : {{report['email']}} </h5>
+              <h5 class="card-title" id="{{ report.timestamp }}">
+                Timestamp
+              </h5>
+              <button onclick="drowsiness(event)" id="{{ report.folder_string }}"
+                class="btn btn-block btn-outline-dark">
+                Drowsiness
+              </button>
+              <button onclick="yawn(event)" id="{{ report.folder_string }}" class="btn btn-block btn-outline-dark">
+                Yawn
+              </button>
+              <button onclick="lostFocus(event)" id="{{ report.folder_string }}" class="btn btn-block btn-outline-dark">
+                Lost Focus
+              </button>
+              <button onclick="showStatImage(event)" id="{{ report.folder_string }}"
+                class="btn btn-block btn-outline-dark">
+                Statistics Image
+              </button>
+
+              <script>
+                var d = new Date('{{ report.timestamp }}');
+                var str = `${d.getDate()}/${d.getMonth() + 1
+                  }/${d.getFullYear()}-${d.getHours()}:${d.getMinutes()}`;
+                document.getElementById(
+                  '{{ report.timestamp }}'
+                ).innerText = str;
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p> no reports</p>
+    {% endif %}
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row" id="imageModalDiv">
+                <!-- Inserting Images Here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function lostFocus(event) {
+        $.ajax({
+          type: 'GET',
+          url: `/static/assets/Reports/${event.target.id}/report.csv`,
+          dataType: 'text',
+          error: (error) => emptyReport(error, 'Lost Focus'),
+          success: function (data) {
+            processData(data, event.target.id, 'lost_focus');
+          },
+        });
+      }
+
+      function drowsiness(event) {
+        $.ajax({
+          type: 'GET',
+          url: `/static/assets/Reports/${event.target.id}/report.csv`,
+          dataType: 'text',
+          error: (error) => emptyReport(error, 'Drowsiness'),
+          success: function (data) {
+            processData(data, event.target.id, 'drowsy');
+          },
+        });
+      }
+
+      function yawn(event) {
+        $.ajax({
+          type: 'GET',
+          url: `/static/assets/Reports/${event.target.id}/report.csv`,
+          dataType: 'text',
+          error: (error) => emptyReport(error, 'Yawn'),
+          success: function (data) {
+            processData(data, event.target.id, 'yawn');
+          },
+        });
+      }
+
+      function showStatImage(event) {
+        modalTitle = document.getElementById('modalTitle');
+        modalTitle.innerHTML = '';
+        modalTitle.classList = 'text-dark';
+        modalTitle.innerText = 'Report';
+
+        imageModalDiv = document.getElementById('imageModalDiv');
+        imageModalDiv.innerHTML = '';
+
+        var imageTag = new Image();
+
+        imageTag.onload = function () {
+          imageTag.classList = 'col-md my-1 img-thumbnail';
+          imageModalDiv.appendChild(imageTag);
+        };
+        imageTag.onerror = function () {
+          imageModalDiv.innerText = 'Report Not Found';
+          imageModalDiv.classList = 'text-dark';
+        };
+
+        imageTag.src = `/static/assets/Reports/${event.target.id}/report_chart.png`;
+
+        $('#myModal').modal({
+          show: true,
+        });
+      }
+
+      function processData(allText, folder_string, type) {
+        var allTextLines = allText.split(/\r\n|\n/);
+        var lines = [];
+        var tarr = [];
+
+        for (var i = 1; i < allTextLines.length; i++) {
+          var data = allTextLines[i].split(',');
+          if (data[1] == type) {
+            tarr.push(
+              `/static/assets/Reports/${folder_string}/dataset/${type}/${type}${data[2]}.jpg`
+            );
+          }
+        }
+        console.log(tarr);
+
+        modalTitle = document.getElementById('modalTitle');
+        modalTitle.classList = 'text-dark';
+        modalTitle.innerText = 'IMAGES';
+
+        imageModalDiv = document.getElementById('imageModalDiv');
+        if (tarr.length == 0) {
+          imageModalDiv.classList = 'text-dark';
+          imageModalDiv.innerText = 'NO IMAGE FOUND';
+        } else {
+          imageModalDiv.innerHTML = '';
+          tarr.forEach((singleImage) => {
+            var imageTag = document.createElement('IMG');
+            imageTag.src = singleImage;
+            imageTag.classList = 'col-md-6 my-1 img-thumbnail';
+            imageModalDiv.appendChild(imageTag);
+          });
+        }
+
+        $('#myModal').modal({
+          show: true,
+        });
+      }
+
+      function emptyReport(error, type) {
+        modalTitle = document.getElementById('modalTitle');
+        modalTitle.innerHTML = '';
+        modalTitle.classList = 'text-dark';
+        modalTitle.innerText = type;
+
+        imageModalDiv = document.getElementById('imageModalDiv');
+        imageModalDiv.innerHTML = '';
+        imageModalDiv.classList = 'text-dark';
+        imageModalDiv.innerText = 'Report Not Found';
+
+        $('#myModal').modal({
+          show: true,
+        });
+      }
+    </script>
+  </div>
+</body>
+
+</html>

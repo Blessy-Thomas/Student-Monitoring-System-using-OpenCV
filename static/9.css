@@ -1,0 +1,433 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* header */
+.topnav-right {
+    margin-top: 20px;
+    padding: 0 15px 0 15px;
+    /* z-index: 1; */
+}
+
+.topnav-right li {
+    position: relative;
+    list-style-type: none;
+    display: inline-block;
+}
+
+.topnav-right {
+    float: right;
+}
+
+.topnav-right li a {
+    display: grid;
+    width: 115px;
+    font-size: 17px;
+
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.topnav-right li.active a:hover {
+    background-color: #b45252;
+    box-shadow: 0 6px 12px 0 rgba(28, 66, 24, 0.5);
+    font-size: 17px;
+}
+
+.topnav-right li a:hover {
+    color: #deae37;
+}
+
+.topnav-right li.active a {
+    text-decoration: none;
+    -webkit-border-radius: 3;
+    -moz-border-radius: 3;
+    -o-border-radius: 3;
+    border-radius: 5px;
+    padding: 9px 20px;
+
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #b45252;
+    border: 0;
+    color: #fff;
+}
+
+/* main */
+body {
+    /* letter-spacing: .2px; */
+    font-family: Arial, Helvetica, sans-serif;
+    background: url("https://static.vecteezy.com/system/resources/previews/001/937/625/non_2x/online-education-application-learning-worldwide-on-phone-mobile-website-background-social-distance-concept-the-classroom-training-course-library-illustration-flat-design-vector.jpg") no-repeat center fixed;
+    background-size: cover;
+    padding-bottom: 50%;
+}
+
+.box,
+.box2 {
+    margin: 5% 0 6%;
+    display: grid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    max-width: 450px;
+    padding: 40px;
+    background-color: aliceblue;
+    background-attachment: fixed;
+    opacity: 0.9;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px 10px rgba(0, 0, 0, .5);
+}
+
+/* .box2{
+    display: grid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 700px;
+    max-width: 450px;
+    padding: 40px;
+    background-color: aliceblue;
+    background-attachment: fixed;
+    opacity: 0.9;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px 10px rgba(0,0,0,.5);
+} */
+.box h2,
+.box2 h2 {
+    font: normal 40px 'Cookie', cursive;
+    letter-spacing: 2px;
+    margin: 0 0 25px;
+    padding: 0;
+    text-align: center;
+    color: #184d47;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px #222;
+}
+
+.box h2 span,
+.box2 h2 span {
+    color: #e0ac1c;
+}
+
+.login-wrapper>h3,
+.login-wrapper>h4 {
+    margin: 0 0 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.login-wrapper>h3 {
+    margin-bottom: 40px;
+    color: #57399d;
+    font-size: 22px;
+    padding: 0 0 15px;
+}
+
+.box .inputBox,
+.box2 .inputBox {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.box .inputBox input,
+.box2 .inputBox input {
+    width: 100%;
+    height: 34px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #000000;
+    padding: 6px 12px;
+    border: 1px solid #57399d;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+/* for error */
+.inputBox.success input {
+    border-color: #2ecc71;
+}
+
+.inputBox.error input {
+    border-color: #e74c3c;
+}
+
+.inputBox i {
+    visibility: hidden;
+    position: absolute;
+    top: 10px;
+    right: -20px;
+}
+
+.inputBox.success i.fa-check-circle {
+    color: #2ecc71;
+    visibility: visible;
+}
+
+.inputBox.error i.fa-exclamation-circle {
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.inputBox small {
+    width: 100%;
+    font-size: 13px;
+    color: #c62828;
+    background: rgba(255, 0, 0, 0.1);
+    text-align: center;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid #ef9a9a;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    display: none;
+}
+
+/*messages*/
+div #Msg1 {
+    margin-top: 5px;
+    width: 100%;
+    font-size: 14px;
+    color: blue;
+    background: rgba(4, 0, 255, 0.1);
+    text-align: center;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid rgb(98, 98, 252);
+}
+
+#errorMsg {
+    margin-top: 5px;
+    width: 100%;
+    font-size: 14px;
+    color: #c62828;
+    background: rgba(255, 0, 0, 0.1);
+    text-align: center;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid #ef9a9a;
+}
+
+/* end messages*/
+.inputBox.success small {
+    display: none;
+}
+
+.inputBox.error small {
+
+    display: block;
+}
+
+.inputBox.error input {
+    margin-bottom: 20px;
+}
+
+/* .box .inputBox #email_error,
+.box .inputBox #pass_error,
+.box2 .inputBox #email_error,
+.box2 .inputBox #pass_error{
+    margin-top: 5px;
+    font-size: 15px;
+    color: #c62828;
+    background: rgba(255,0,0,0.1);
+    text-align: center;
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid #ef9a9a;
+    display: none;
+} */
+.box .inputBox label,
+.box2 .inputBox label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 24px;
+    pointer-events: none;
+    transition: .5s;
+    color: rgba(0, 0, 0, .5);
+}
+
+.box .inputBox input:focus~label,
+/* .box .inputBox input:valid ~ label, */
+.box .inputBox input:not([value=""])~label,
+.box2 .inputBox input:focus~label,
+/* .box .inputBox input:valid ~ label, */
+.box2 .inputBox input:not([value=""])~label {
+    top: -30px;
+    left: 0;
+    color: rgb(255, 0, 98);
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.box .button-success,
+.box2 .button-success {
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    padding: 8px;
+    margin: 5px 0 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #57399d;
+    transition: 0.5s;
+}
+
+.button-success:hover {
+    background-color: #6e41d6;
+    box-shadow: 0 6px 12px 0 rgba(66, 157, 57, .2);
+}
+
+div.login-footer {
+    font-size: 14px;
+    letter-spacing: -.4px;
+    padding-top: 12px;
+    text-align: center;
+}
+
+.login-footer {
+    font-size: 14px;
+    letter-spacing: -.3px;
+    padding: 2px 0 5px;
+}
+
+/******large devices************/
+@media (min-width: 1200px) {
+
+    .box,
+    .box2 {
+        background-attachment: fixed;
+    }
+}
+
+/******medium devices************/
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .box {
+        margin: 6% 0 6%;
+        background-attachment: fixed;
+    }
+
+    .box2 {
+        margin-top: 15%;
+
+    }
+}
+
+/******small devices************/
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .box,
+    .box2 {
+        margin-top: 10%;
+        background-color: aliceblue;
+        opacity: 0.9;
+        width: 500px;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 15px 25px 10px rgba(0, 0, 0, .5);
+    }
+
+}
+
+/******extra small devices************/
+@media (max-width: 767px) {
+
+    body {
+        /* letter-spacing: .2px; */
+        background: none;
+    }
+
+    .container ul.topnav-right {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .topnav-right li a {
+        display: grid;
+        font-size: 15px;
+        width: 80px;
+        font-size: 14px;
+        padding-top: 5px;
+        padding-left: 10px;
+        color: #000000;
+    }
+
+    .topnav-right li.active a {
+        line-height: 20px;
+        padding: 5px 10px;
+    }
+
+    .box,
+    .box2 {
+        margin-top: 7%;
+        /* position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%); */
+        background-color: transparent;
+        display: block;
+        width: 500px;
+        padding: 40px;
+        box-shadow: none;
+    }
+}
+
+/******extra extra small devices************/
+@media (max-width: 479px) {
+    body {
+        /* letter-spacing: .2px; */
+        background: none;
+    }
+
+    .container .topnav-right {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .topnav-right li a {
+        display: grid;
+        font-size: 15px;
+        width: 80px;
+        font-size: 14px;
+        padding-top: 5px;
+        padding-left: 10px;
+        color: #000000;
+    }
+
+    .topnav-right li.active a {
+        line-height: 20px;
+        padding: 5px 10px;
+    }
+
+    .box,
+    .box2 {
+        margin-top: 10%;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        padding-bottom: 60px;
+        transform: translate(-50%, -50%);
+        background-color: transparent;
+        display: block;
+        opacity: 1;
+        width: 300px;
+
+        box-shadow: none;
+    }
+}
