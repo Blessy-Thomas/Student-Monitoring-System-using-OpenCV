@@ -1,0 +1,13 @@
+dlib==19.21.1
+Flask==1.1.2
+Flask-MySQLdb==0.2.0
+future==0.18.2
+imutils==0.5.4
+Jinja2==2.11.2
+matplotlib @ file:///C:/ci/matplotlib-base_1603355780617/work
+mysql-connector-python==8.0.24
+numpy==1.19.2
+opencv-contrib-python==4.5.1.48
+opencv-python==4.5.1.48
+opencv-python-headless==4.2.0.34
+scipy==1.6.1
