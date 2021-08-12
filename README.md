@@ -49,3 +49,18 @@ Download the file <b>shape_predictor_68_face_landmarks.dat</b><a href = "https:/
 Install all the system requirments by:
 ```bash 
 pip install -r requirements.txt
+```
+### Step 4: 
+After the system has been setup. Run the command: 
+```bash 
+python focus_alert.py
+```
+
+### Step 5: 
+Open your browser and in the search bar type: 
+<b>localhost:8000</b> as this port is mostly used by flask. 
+In case, this port is not available in your system, flask will try to use another port. The port number will be displayed in the command prompt.
+So, type in the same port number in that case as: 
+<b>localhost:<port_number></b>.
+  
+After all these steps have been completed successfully, you will see a web page opening up in the browser. Now you are free to explore the system.
