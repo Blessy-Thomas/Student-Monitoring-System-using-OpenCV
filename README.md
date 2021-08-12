@@ -16,7 +16,7 @@ The example code is in Python ([version 2.7](https://www.python.org/download/rel
 5) import matplotlib
 6) import mysql.connector
 
-Installing and Configuring dlib:
+## Installing and Configuring dlib:
 We need to create an enivronment in order to install dlib, as it cannot be directly installed using pip. So, follow this commands in order to install dlib into your system if you haven't installed it previously. Make sure you have Anaconda installed, as we will be doing everyting in Anaconda Prompt. 
 ### Step 1: Update conda 
 ```bash
