@@ -50,7 +50,7 @@ conda deactivate
 ### Step 1: 
 Clone the repository into your system by: 
 ```bash 
-git clone https://github.com/fear-the-lord/Drowsiness-Detection.git
+git clone https://github.com/Blessy-Thomas/Student-Monitoring-System-using-OpenCV.git
 ```
 Or directly download the zip.
 
