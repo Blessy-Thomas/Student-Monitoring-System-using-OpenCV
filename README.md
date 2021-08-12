@@ -4,6 +4,16 @@ An Application which helps teachers to know whether students are paying attentio
 Resources:
 https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/
 
+### Code Requirements
+The example code is in Python ([version 2.7](https://www.python.org/download/releases/2.7/) or higher will work). 
+
+### Dependencies
+
+1) import cv2
+2) import imutils
+3) import dlib
+4) import scipy
+
 Installing and Configuring dlib:
 We need to create an enivronment in order to install dlib, as it cannot be directly installed using pip. So, follow this commands in order to install dlib into your system if you haven't installed it previously. Make sure you have Anaconda installed, as we will be doing everyting in Anaconda Prompt. 
 ### Step 1: Update conda 
