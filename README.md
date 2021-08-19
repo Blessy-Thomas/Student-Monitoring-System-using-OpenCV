@@ -76,3 +76,11 @@ So, type in the same port number in that case as:
 <b>localhost:<port_number></b>.
   
 After all these steps have been completed successfully, you will see a web page opening up in the browser. Now you are free to explore the system.
+  
+### Contributors
+  <ul>
+    <li>Blessy Thomas</li>
+    <li>Prajkta Ghorpade</li>
+    <li>Ammu Attiyil</li>
+    <li>Rhythm Negi</li>
+  </ul>
