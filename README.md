@@ -1,6 +1,25 @@
 # Student-Monitoring-System-using-OpenCV
 An Application that helps teachers to know whether students are paying attention during an online lecture.
 
+Distant learning, a method of study where teachers and students do not meet in a classroom but use
+the Internet, e-mail, mail, etc. to have classes. This methodology was not supposed to be the ideal
+way of learning. This kind of teaching-learning process does not provide any assurance of whether
+the students attending the classes are actually understanding the concepts being taught. The
+teachers cannot rely on this method completely to check if the students are physically and mentally
+present in the online class.
+Though not the ideal method, it is the only way through which the teaching learning process can
+take place during the Covid-19 Pandemic. Most of the universities and colleges have switched to
+distant or the online mode of teaching when the Covid-19 virus was spreading all over the world.
+The students have started attending their lectures and laboratory sessions from their homes while
+the teachers are teaching them from their homes. The classroom environment is no longer a
+necessity. Everyone has adapted themselves in this kind of communication for learning.
+But the question of whether the complete knowledge provided by the professors or teachers is
+really getting delivered to the students in this manner, still remains answered. Assuming students
+to be attentive during the classes may be right for some of the students but to generalize it for all
+students will not be right. Hence we tried developing a method which can be a solution to this
+problem. This is an overview of the project ‘Student Monitoring System using OpenCV’.
+
+
 Resources:
 https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/
 
