@@ -25,7 +25,8 @@ https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/
 
 ### Download
 Visual studio Community 2019:
-https://visualstudio.microsoft.com/downloads/
+https://visualstudio.microsoft.com/downloads/ <br>
+Visual Studio Code: https://code.visualstudio.com/download
 
 ### Code Requirements
 The example code is in Python ([version 2.7](hhttps://www.python.org/downloads/) or higher will work). 
