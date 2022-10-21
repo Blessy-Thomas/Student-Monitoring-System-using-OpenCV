@@ -104,7 +104,7 @@ After all these steps have been completed successfully, you will see a web page 
 ### Contributors
   <ul>
     <li>Blessy Thomas</li>
-    <li>Prajkta Ghorpade</li>
-    <li>Ammu Attiyil</li>
-    <li>Rhythm Negi</li>
+    <li><a href="https://github.com/Prajkta-Ghorpade">Prajkta Ghorpade<</a>/li>
+    <li><a href="">Ammu Attiyil</a>/li>
+    <li><a href="">Rhythm Negi</a></li>
   </ul>
